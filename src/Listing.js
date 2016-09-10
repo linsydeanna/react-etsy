@@ -7,6 +7,8 @@ class Listing extends Component {
     return (
       <div className="Listing">
         <p>{this.props.title}</p>
+        <img src={this.props.image}/>
+        <p>{this.props.price}</p>
       </div>
     );
   }
