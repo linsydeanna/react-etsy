@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-import {Router, Route, hashHistory, IndexRoute} from 'react-router'
+import {Router, Route, hashHistory, Link, IndexRoute} from 'react-router'
 import App from './App'
 
 class Listing extends Component {
   render() {
     return (
-      <div className="Listing">
+      <Link to="/info/:id"><div className="Listing">
         <p>{this.props.title}</p>
         <img src={this.props.image}/>
         <p>{this.props.price}</p>
-      </div>
+      </div></Link>
     );
   }
 }
