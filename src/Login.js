@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Router, Route, hashHistory, Link, IndexRoute} from 'react-router'
 import Rebase from 're-base';
 
 const base = Rebase.createClass({
@@ -30,7 +31,7 @@ const base = Rebase.createClass({
         <form onSubmit={this.createUser.bind(this)}>
         <input placeholder="email" ref="email"/>
         <input placeholder="password" ref="password"/>
-        <button type="submit">Log in</button>
+        <Link to="/home"><button type="submit">Log in</button></Link>
         </form>
       )
     }

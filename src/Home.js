@@ -37,7 +37,7 @@ constructor () {
   render() {
 
     const items = this.state.listings.map((product) => {
-    return (<Listing title={product.title} image={product.Images[0].url_75x75} price={product.price} key={product.listing_id}/>)
+    return (<Listing title={product.title} image={product.Images[0].url_75x75} price={product.price} key={product.listing_id} id={product.listing_id}/>)
   })
 
     return (
