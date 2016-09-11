@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Router, Route, hashHistory, IndexRoute} from 'react-router'
 import App from './App'
 import Login from './Login'
@@ -11,7 +11,7 @@ const routes = (
     <Route path="/" component={App}>
       <IndexRoute component={Login}/>
       <Route path="/home" component={Home}/>
-      <Route path="/info" component={Info}/>
+      <Route path="/info/:id" component={Info}/>
       <Route path="/wishlist" component={WishList}/>
     </Route>
   </Router>
