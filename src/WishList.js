@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-import {Router, Route, hashHistory, IndexRoute} from 'react-router'
 import Rebase from 're-base';
-import App from './App'
-import Info from './Info'
 
 
 const base = Rebase.createClass({

@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
 import api_key from './config/api_key'
 import Rebase from 're-base';
-import Listing from './Listing'
-import WishList from './WishList'
-import {Router, Route, hashHistory, Link, IndexRoute} from 'react-router'
+import {Link} from 'react-router'
 import jsonp from 'jsonp'
-import App from './App'
-
 
 const base = Rebase.createClass({
     apiKey: "AIzaSyB5n-eyFjG7ci0p1bGJpIMKQCPxDY5vS14",
@@ -71,8 +67,8 @@ class Info extends Component {
         <p>{this.state.listing.title}</p>
         <p>{this.state.listing.price}</p>
         <p>{this.state.listing.description}</p>
-        <button onClick={this.addToWishList}>Add to Wish List</button>
-        <Link to="/wishlist"><button>View my WishList</button></Link>
+        <button className="btn btn-lg btn-danger" onClick={this.addToWishList}>Add to Wish List</button>
+        <Link to="/wishlist"><button className="btn btn-lg btn-danger">View my WishList</button></Link>
 
       </div>
     );

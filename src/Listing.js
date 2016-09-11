@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
-import {Router, Route, hashHistory, Link, IndexRoute} from 'react-router'
-import App from './App'
+import {Link} from 'react-router'
 
 class Listing extends Component {
   render() {
     return (
       <Link to={'/info/'+this.props.id}><div className="Listing">
         <p>{this.props.title}</p>
-        <img src={this.props.image}/>
+        <img src={this.props.image} alt="listing"/>
         <p>{this.props.price}</p>
       </div></Link>
     );

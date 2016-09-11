@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import Listing from './Listing'
-import axios from 'axios'
 import jsonp from 'jsonp'
 import api_key from './config/api_key'
-import {Router, Route, hashHistory, IndexRoute} from 'react-router'
-import App from './App'
 
 class Home extends Component {
 
@@ -41,9 +38,9 @@ constructor () {
   })
 
     return (
-      <div className="Home">
-        <input placeholder="search here" ref="search"/>
-        <button onClick={this.returnListings}>Search it!</button>
+      <div className="Home form-signin">
+        <input className="form-control" placeholder="search here" ref="search"/>
+        <button className="btn btn-lg btn-danger" onClick={this.returnListings}>Search it!</button>
         <ul>
         {items}
         </ul>

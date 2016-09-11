@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
-import {Router, Route, hashHistory, Link, IndexRoute} from 'react-router'
+import {hashHistory} from 'react-router'
 import Rebase from 're-base';
+import './login.css'
+
 
 const base = Rebase.createClass({
       apiKey: "AIzaSyA38b7bucbaDcn2w8RnMql3bj5BhSF_wOg",
@@ -46,11 +48,13 @@ const base = Rebase.createClass({
 
     render () {
       return (
-        <form onSubmit={this.createUser.bind(this)}>
-        <input placeholder="email" ref="email"/>
-        <input placeholder="password" ref="password"/>
-<button type="submit">Log in</button>
+        <div className="container">
+        <form className="form-signin" onSubmit={this.createUser.bind(this)}>
+        <input className="inputEmail form-control" type="email" placeholder="email" ref="email"/>
+        <input className="form-control" type="password" placeholder="password" ref="password"/>
+        <button className="btn btn-lg btn-danger" type="submit">Log in</button>
         </form>
+        </div>
       )
     }
   }
