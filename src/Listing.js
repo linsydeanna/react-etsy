@@ -5,7 +5,7 @@ import App from './App'
 class Listing extends Component {
   render() {
     return (
-      <Link to={'/info/'+this.props.id} image={this.props.image}><div className="Listing">
+      <Link to={'/info/'+this.props.id}><div className="Listing">
         <p>{this.props.title}</p>
         <img src={this.props.image}/>
         <p>{this.props.price}</p>

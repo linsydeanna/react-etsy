@@ -10,6 +10,12 @@ const base = Rebase.createClass({
   });
 
   class Login extends Component {
+    constructor(){
+      super();
+      this.state = {
+        users: []
+      }
+    }
 
     createUser(event) {
       event.preventDefault();
@@ -18,11 +24,23 @@ const base = Rebase.createClass({
       base.createUser({
       email, password
   }, this.handleCreatedUser);
+      hashHistory.push('/home');
   }
 
   handleCreatedUser(error, authData) {
+    let self = this
     console.log('auth data', authData);
     console.log('error', error);
+    self.setState({
+    users: {
+      userId: authData.uid
+    }
+  })
+    this.rebaseRef = base.syncState('users', {
+      context: this,
+      state: 'users',
+      asArray: true,
+})
     // this.props.setCurrentUser(authData);
   }
 
@@ -31,7 +49,7 @@ const base = Rebase.createClass({
         <form onSubmit={this.createUser.bind(this)}>
         <input placeholder="email" ref="email"/>
         <input placeholder="password" ref="password"/>
-        <Link to="/home"><button type="submit">Log in</button></Link>
+<button type="submit">Log in</button>
         </form>
       )
     }

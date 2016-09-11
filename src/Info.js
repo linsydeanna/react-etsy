@@ -1,17 +1,29 @@
 import React, { Component } from 'react'
 import api_key from './config/api_key'
+import Rebase from 're-base';
 import Listing from './Listing'
-import {Router, Route, hashHistory, IndexRoute} from 'react-router'
+import WishList from './WishList'
+import {Router, Route, hashHistory, Link, IndexRoute} from 'react-router'
 import jsonp from 'jsonp'
 import App from './App'
+
+
+const base = Rebase.createClass({
+    apiKey: "AIzaSyB5n-eyFjG7ci0p1bGJpIMKQCPxDY5vS14",
+    authDomain: "login-app-2c048.firebaseapp.com",
+    databaseURL: "https://login-app-2c048.firebaseio.com",
+    storageBucket: "login-app-2c048.appspot.com",
+  });
 
 class Info extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      listing: {}
+      listing: {},
+      list: []
     }
     this.getListing()
+    this.addToWishList = this.addToWishList.bind(this)
   }
   getListing () {
     let self = this
@@ -22,14 +34,36 @@ class Info extends Component {
         } else {
           console.log("data is", data);
           self.setState({
-            listing: data.results[0]
+            listing: data.results[0],
           })
           console.log("state is", self.state)
         }
       });
   }
 
+  componentDidMount() {
+    this.rebaseRef = base.syncState('list', {
+      context: this,
+      state: 'list',
+      asArray: true,
+      then(){
+        this.setState({loading:false})
+      }
+    })
+  }
+
+  addToWishList (event) {
+    event.preventDefault();
+    let list = this.state.list
+    let item = this.state.listing.title
+    this.setState({
+      list: [...list, item]
+    })
+    console.log("list is", list)
+  }
+
   render() {
+
     console.log("props are", this.props)
     return (
       <div className="Info">
@@ -37,6 +71,9 @@ class Info extends Component {
         <p>{this.state.listing.title}</p>
         <p>{this.state.listing.price}</p>
         <p>{this.state.listing.description}</p>
+        <button onClick={this.addToWishList}>Add to Wish List</button>
+        <Link to="/wishlist"><button>View my WishList</button></Link>
+
       </div>
     );
   }
